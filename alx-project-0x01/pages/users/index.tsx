@@ -4,7 +4,7 @@ import Header from "@/components/layout/Header";
 import { UserProps } from "@/interfaces";
 import { useCallback, useState } from "react";
 
-const UsersPage: React.FC<{ posts: UserProps[] }> = ({ posts: allPosts }) => {
+const Users: React.FC<{ posts: UserProps[] }> = ({ posts: allPosts }) => {
   const [posts, setPosts] = useState(allPosts);
   const [isModalOpen, setModalOpen] = useState(false);
 
@@ -51,4 +51,4 @@ export async function getStaticProps() {
   };
 }
 
-export default UsersPage;
+export default Users;

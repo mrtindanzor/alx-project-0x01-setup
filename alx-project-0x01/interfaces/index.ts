@@ -53,3 +53,5 @@ export interface UserModalProps {
   onClose: () => void;
   onSubmit: (user: UserProps) => void;
 }
+
+//["username: string;", "street: string;", "catchPhrase: string;"]

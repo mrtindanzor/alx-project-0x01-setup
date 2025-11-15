@@ -4,12 +4,12 @@ import Header from "@/components/layout/Header";
 import { UserProps } from "@/interfaces";
 import { useCallback, useState } from "react";
 
-const UsersPage: React.FC<{ users: UserProps[] }> = ({ users: allUsers }) => {
-  const [users, setUsers] = useState(allUsers);
+const UsersPage: React.FC<{ posts: UserProps[] }> = ({ posts: allPosts }) => {
+  const [posts, setPosts] = useState(allPosts);
   const [isModalOpen, setModalOpen] = useState(false);
 
   const handleSubmit = useCallback((data: UserProps) => {
-    setUsers((users) => [{ ...data, id: users.length + 1 }, ...users]);
+    setPosts((posts) => [{ ...data, id: posts.length + 1 }, ...posts]);
     setModalOpen(false);
   }, []);
   return (
@@ -25,7 +25,7 @@ const UsersPage: React.FC<{ users: UserProps[] }> = ({ users: allUsers }) => {
       </div>
 
       <ul className="py-4 px-4 grid md:grid-cols-2 xl:grid-cols-3 gap-x-5 gap-y-10">
-        {users.map((user) => (
+        {posts.map((user) => (
           <UserCard key={user.id} {...user} />
         ))}
       </ul>
@@ -42,11 +42,11 @@ const UsersPage: React.FC<{ users: UserProps[] }> = ({ users: allUsers }) => {
 
 export async function getStaticProps() {
   const response = await fetch("https://jsonplaceholder.typicode.com/users");
-  const users = await response.json();
+  const posts = await response.json();
 
   return {
     props: {
-      users,
+      posts,
     },
   };
 }
